@@ -44,7 +44,7 @@ const clickerService = {
       }, 2000);
     });
 
-    return clickerModel;
+    return clickerModel; 
   },
 };
 
