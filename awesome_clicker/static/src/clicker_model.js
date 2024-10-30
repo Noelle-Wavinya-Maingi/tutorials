@@ -58,10 +58,7 @@ export class ClickerModel extends Component {
             this.level += 1;
         }
 
-        const reward = this.giveReward();
-        if (reward) {
-            this.notification.add(`You have received a reward: ${reward.description}`);
-        }
+        this.giveReward();
     }
 
     buyBot(name) {
