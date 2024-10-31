@@ -3,7 +3,6 @@
 	<t t-name="awesome_clicker.ClickerSystray">
 		<div class="o_nav_entry">
 			<Dropdown>
-				<DropdownItem>
 					<button>
 						<ClickerValue />
 						<i class="fa fa-mouse-pointer fa-fw">
@@ -17,27 +16,28 @@
 						<i class="fa fa-apple fa-fw">
 						</i>
 					</button>
-				</DropdownItem>
-				<DropdownItem>
-					<button class="btn btn-secondary" t-on-click="this.openClientAction">
-						Open the clicker game
-					</button>
-				</DropdownItem>
-				<DropdownItem>
-					<button class="btn btn-secondary" t-on-click="() => this.clicker.buyBot('clickbot')">
-						Buy a ClickBot
-					</button>
-				</DropdownItem>
-				<DropdownItem t-foreach="this.clicker.trees" t-as="tree" t-key="tree">
-					<t t-esc="tree_value.purchased" />
-					x
-					<t t-esc="tree" />
-				</DropdownItem>
-				<DropdownItem t-foreach="this.clicker.fruits" t-as="fruit" t-key="fruit">
-					<t t-esc="fruit_value" />
-					x
-					<t t-esc="fruit" />
-				</DropdownItem>
+				<t t-set-slot="content">
+					<DropdownItem>
+						<button class="btn btn-secondary" t-on-click="this.openClientAction">
+							Open the clicker game
+						</button>
+					</DropdownItem>
+					<DropdownItem>
+						<button class="btn btn-secondary" t-on-click="() => this.clicker.buyBot('clickbot')">
+							Buy a ClickBot
+						</button>
+					</DropdownItem>
+					<DropdownItem t-foreach="this.clicker.trees" t-as="tree" t-key="tree">
+						<t t-esc="tree_value.purchased" />
+							x
+						<t t-esc="tree" />
+					</DropdownItem>
+					<DropdownItem t-foreach="this.clicker.fruits" t-as="fruit" t-key="fruit">
+						<t t-esc="fruit_value" />
+							x
+						<t t-esc="fruit" />
+					</DropdownItem>
+				</t>
 			</Dropdown>
 		</div>
 	</t>
