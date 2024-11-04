@@ -124,12 +124,18 @@ export class ClickerModel extends Component {
 
   static fromJSON(json, services) {
     const clicker = new ClickerModel(services);
-    Object.assign(clicker, json);
-    clicker.receivedRewards = new Set(Array.isArray(json.receivedRewards) ? json.receivedRewards : []);
+    const rewards =  new Set(Array.isArray(json.receivedRewards) ? json.receivedRewards : []);
+    const cleanJson = {...json};
+    delete cleanJson.receivedRewards;
+    Object.assign(clicker, cleanJson);
+    clicker.receivedRewards = rewards;
     return clicker;
   }
 
   giveReward() {
+    if (!(this.receivedRewards instanceof Set)) {
+      this.receivedRewards = new Set(Array.isArray(this.receivedRewards) ? this.receivedRewards : []);
+    }
     const availableReward = [];
     for (const reward of rewards) {
       const meetsMinLevel =
